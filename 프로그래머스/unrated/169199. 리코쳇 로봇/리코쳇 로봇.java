@@ -78,7 +78,7 @@ class Solution {
                         answer = temp[2];
                         break outer;
                     }
-                    // 도착지가 아닐 경우 해당 방향으로 방문하지 않은 곳일 경우 큐에 삽입
+                    // 도착지가 아닐 경우 방문하지 않은 곳일 경우 큐에 삽입
                     if(!visited[nx][ny]){
                         visited[nx][ny] = true;
                         q.offer(new int[] {nx, ny, temp[2] + 1});
