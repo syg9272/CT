@@ -48,16 +48,10 @@ class Solution {
         
         // 큐 생성 후 시작 지점 설정
         Queue<int[]> q = new ArrayDeque<>();
-        // 방문체크 4방향
-        boolean[][][] visited = new boolean[board.length][board[0].length()][4];
-        visited[startX][startY][0] = true;
-        visited[startX][startY][1] = true;
-        visited[startX][startY][2] = true;
-        visited[startX][startY][3] = true;
-        q.offer(new int[] {startX, startY, 0, 1});
-        q.offer(new int[] {startX, startY, 1, 1});
-        q.offer(new int[] {startX, startY, 2, 1});
-        q.offer(new int[] {startX, startY, 3, 1});
+        // 방문체크
+        boolean[][] visited = new boolean[board.length][board[0].length()];
+        visited[startX][startY] = true;
+        q.offer(new int[] {startX, startY, 1});
         
         // bfs
         outer : while(!q.isEmpty()) {
@@ -81,16 +75,13 @@ class Solution {
                     }
                     // 도착지일 경우 탐색 끝 (bfs여서 해당 depth가 최소값)
                     if(map[nx][ny] == 'G') {
-                        answer = temp[3];
+                        answer = temp[2];
                         break outer;
                     }
                     // 도착지가 아닐 경우 해당 방향으로 방문하지 않은 곳일 경우 큐에 삽입
-                    if(!visited[nx][ny][d]){
-                        visited[nx][ny][d] = true;
-                        q.offer(new int[] {nx, ny, 0, temp[3] + 1});
-                        q.offer(new int[] {nx, ny, 1, temp[3] + 1});
-                        q.offer(new int[] {nx, ny, 2, temp[3] + 1});
-                        q.offer(new int[] {nx, ny, 3, temp[3] + 1});
+                    if(!visited[nx][ny]){
+                        visited[nx][ny] = true;
+                        q.offer(new int[] {nx, ny, temp[2] + 1});
                     }
                 }
             }
