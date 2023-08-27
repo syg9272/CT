@@ -47,7 +47,6 @@ class Solution {
             // 5개 광물 캐기
             for(int j = index; j < idx + 5; j ++) {
                 if(j >= str.length) break;
-                if(cnt[i] <= 0) continue outer;
                 int calc = i - map.get(str[j]);
                 if(i - map.get(str[j]) < 0) calc = 0;
                 tired += Math.pow(5, calc);
