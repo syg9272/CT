@@ -17,7 +17,6 @@ class Solution {
             }
         }
         // n행의 유일한 유효값인 000에 저장된 결과값 반환
-        // return (int) map[n - 1][0];
         return (int) (map[n - 1][0] % 1000000007L);
     }
 }
