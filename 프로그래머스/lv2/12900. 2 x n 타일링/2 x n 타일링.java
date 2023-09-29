@@ -6,8 +6,6 @@ class Solution {
         for(int row = 0; row < n - 1; row ++) {
             map[row + 1][0] += (map[row][3] + map[row][0]) % 1000000007L;
             map[row + 1][3] += map[row][0] % 1000000007L;
-            map[row + 1][1] += map[row][2] % 1000000007L;
-            map[row + 1][2] += map[row][1] % 1000000007L;
         }
         
         return (int) (map[n - 1][0] % 1000000007L);
